@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    tools:context=".SplashActivity">
+
+
+    <ImageView
+        android:id="@+id/main_logo"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/splashscreen_logo_margin"
+        android:layout_marginEnd="@dimen/splashscreen_logo_margin"
+        android:scaleType="centerInside"
+        android:src="@drawable/logo1" />
+
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:visibility="gone"
+        android:theme="@style/progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="40dp"
+        />
+
+
+    <!--<RelativeLayout
+
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_width="match_parent"
+       android:gravity="center_vertical"
+        android:layout_height="match_parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/logo"
+            android:layout_width="280dp"
+            android:layout_height="270dp"
+            android:layout_marginTop="120dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/logo" />
+
+        <ImageView
+        android:layout_width="290dp"
+            android:scaleType="fitCenter"
+            android:layout_marginTop="50dp"
+        android:layout_below="@+id/logo"
+        android:layout_height="290dp"
+        android:src="@drawable/bottom_logo_02" />
+
+    </RelativeLayout>-->
+</FrameLayout>

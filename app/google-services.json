@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "145511640358",
+    "firebase_url": "https://gruppozenit-c057a.firebaseio.com",
+    "project_id": "gruppozenit-c057a",
+    "storage_bucket": "gruppozenit-c057a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:145511640358:android:2f8f502680ed606013a5e7",
+        "android_client_info": {
+          "package_name": "com.gruppozenit.messagesapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "145511640358-o5ldfegicfttk12aeqbqjtr0hg8nc75i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkrfeDYctbldsxPwTBa-cC7FzI_EheABU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "145511640358-o5ldfegicfttk12aeqbqjtr0hg8nc75i.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "145511640358-r4b7tv5j7ru1d88qocbcgks37eu65tt3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.gruppozenit.messagesapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
