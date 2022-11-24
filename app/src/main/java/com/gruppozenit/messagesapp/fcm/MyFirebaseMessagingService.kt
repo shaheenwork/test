@@ -2,6 +2,7 @@ package com.gruppozenit.messagesapp.fcm
 
 import android.app.PendingIntent
 import android.content.Intent
+import android.os.Build
 import androidx.core.app.NotificationManagerCompat
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
@@ -146,19 +147,56 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     private fun init(): Triple<PendingIntent, PendingIntent, PendingIntent> {
         prefManager = PrefManager.getInstance(this)
 
-        val maintActivityIntent = Intent(this, MainActivity::class.java)
+        val messageListActivityIntent = Intent(this, MainActivity::class.java)
         val loginActivityIntent = Intent(this, LoginActivity::class.java)
         val loginWaitActivityIntent = Intent(this, LoginWaitActivity::class.java)
-        maintActivityIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+        messageListActivityIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
         loginActivityIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
         loginWaitActivityIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
 
-        val messagesListActivitypendingIntent = PendingIntent.getActivity(this,
-                0, maintActivityIntent, PendingIntent.FLAG_UPDATE_CURRENT)
-        val loginActivitypendingIntent = PendingIntent.getActivity(this,
-                0, loginActivityIntent, PendingIntent.FLAG_UPDATE_CURRENT)
-        val loginWaitActivityPendingIntent = PendingIntent.getActivity(this,
-                0, loginWaitActivityIntent, PendingIntent.FLAG_UPDATE_CURRENT)
+        val messagesListActivitypendingIntent =
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                PendingIntent.getActivity(
+                    this,
+                    0,
+                    messageListActivityIntent,
+                    PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+                )
+            } else {
+                PendingIntent.getActivity(
+                    this,
+                    0, messageListActivityIntent, PendingIntent.FLAG_UPDATE_CURRENT
+                )
+
+            }
+        val loginActivitypendingIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            PendingIntent.getActivity(
+                this,
+                0,
+                loginActivityIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            )
+        } else {
+            PendingIntent.getActivity(
+                this,
+                0, loginActivityIntent, PendingIntent.FLAG_UPDATE_CURRENT
+            )
+
+        }
+        val loginWaitActivityPendingIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            PendingIntent.getActivity(
+                this,
+                0,
+                loginWaitActivityIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            )
+        } else {
+            PendingIntent.getActivity(
+                this,
+                0, loginWaitActivityIntent, PendingIntent.FLAG_UPDATE_CURRENT
+            )
+
+        }
         return Triple(messagesListActivitypendingIntent, loginActivitypendingIntent, loginWaitActivityPendingIntent)
     }
 
